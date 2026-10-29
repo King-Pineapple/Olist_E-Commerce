@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BF2DE270-9415-655B-7DBF-A2852E038E4E}|Olist_E-Commerce_Pipeline.dtproj|C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\01_Bronze_Load.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{BF2DE270-9415-655B-7DBF-A2852E038E4E}|Olist_E-Commerce_Pipeline.dtproj|solutionrelative:01_Bronze_Load.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF2DE270-9415-655B-7DBF-A2852E038E4E}|Olist_E-Commerce_Pipeline.dtproj|C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\00_Master.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{BF2DE270-9415-655B-7DBF-A2852E038E4E}|Olist_E-Commerce_Pipeline.dtproj|solutionrelative:00_Master.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF2DE270-9415-655B-7DBF-A2852E038E4E}|Olist_E-Commerce_Pipeline.dtproj|C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\02_Silver_Transformation.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{BF2DE270-9415-655B-7DBF-A2852E038E4E}|Olist_E-Commerce_Pipeline.dtproj|solutionrelative:02_Silver_Transformation.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "02_Silver_Transformation.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\02_Silver_Transformation.dtsx",
+              "RelativeDocumentMoniker": "02_Silver_Transformation.dtsx",
+              "ToolTip": "C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\02_Silver_Transformation.dtsx [Design]",
+              "RelativeToolTip": "02_Silver_Transformation.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2026-10-29T13:08:39.513Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "01_Bronze_Load.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\01_Bronze_Load.dtsx",
+              "RelativeDocumentMoniker": "01_Bronze_Load.dtsx",
+              "ToolTip": "C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\01_Bronze_Load.dtsx [Design]",
+              "RelativeToolTip": "01_Bronze_Load.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2026-10-27T17:08:02.749Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "00_Master.dtsx [Design]",
+              "DocumentMoniker": "C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\00_Master.dtsx",
+              "RelativeDocumentMoniker": "00_Master.dtsx",
+              "ToolTip": "C:\\Users\\kryst\\Desktop\\Git Projects\\Olist_E-Commerce\\Olist_E-Commerce_Pipeline\\00_Master.dtsx [Design]",
+              "RelativeToolTip": "00_Master.dtsx [Design]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
+              "WhenOpened": "2026-10-22T14:40:31.377Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
