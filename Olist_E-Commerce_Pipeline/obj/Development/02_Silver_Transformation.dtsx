@@ -11,9 +11,523 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionGUID="{B86212E4-0D17-451E-B000-0C12C1624CF6}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{E05C2FF8-F034-4990-AB39-EEE05498AC2C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-GLTD4E8.master]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+      DTS:ObjectName="DESKTOP-GLTD4E8.master">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-GLTD4E8;Initial Catalog=master;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{392DA717-F7E1-43EF-B087-5C2DD5054C5D}DESKTOP-GLTD4E8.master;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
-  <DTS:Executables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create_Error_Rows_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8E4847AF-5D17-4578-B4C6-977BC621CC67}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Error_Rows_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'error_rows'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE[Olist_DWH].[etl].[error_rows] (&#xA;   &#xA;[error_id] INT IDENTITY(1,1) PRIMARY KEY,&#xA;   &#xA;&#xA;[source_table] VARCHAR(100),&#xA;&#xA;    &#xA;[source_key] VARCHAR(100),&#xA;&#xA;    &#xA;[error_reason] VARCHAR(500),&#xA;&#xA;    &#xA;[raw_data] NVARCHAR(MAX),&#xA; &#xA;   &#xA;[error_date] DATETIME2 DEFAULT GETDATE()&#xA;&#xA;);&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Order_Items_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{485E2BD0-7E5D-481C-9C61-3D6AE853E5CB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Order_Items_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Olist_Order_Items'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Olist_Order_Items] (   &#xA;[order_id] VARCHAR(50),&#xA;&#xA;[order_item_id] INT,&#xA;&#xA;[product_id] VARCHAR(50),&#xA;&#xA;[seller_id] VARCHAR(50),&#xA;&#xA;[shipping_limit_date] DATETIME2,&#xA;&#xA;[price] DECIMAL(10,2),&#xA;&#xA;[freight_value] DECIMAL(10,2),&#xA;&#xA;[total_item_value] DECIMAL(10,2),&#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME()&#xA; );&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Silver_Customers_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6F61D38B-E22C-4AE4-BACC-7BCAF70DDA16}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Silver_Customers_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Customers'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Customers] (&#xA;       &#xA;[customer_id] VARCHAR(50) PRIMARY KEY,&#xA;        &#xA;[customer_unique_id] VARCHAR(50),&#xA;&#xA;[customer_zip_code_prefix] VARCHAR(5),&#xA;&#xA;[customer_city] VARCHAR(100),&#xA;&#xA;[customer_state] VARCHAR(2),&#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME()&#xA; );&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Silver_Geolocation_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{334B48C3-02E1-4618-A6C4-AE646F17E760}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Silver_Geolocation_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Geolocation'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Geolocation] (&#xA;       &#xA;[geolocation_zip_code_prefix] VARCHAR(5) PRIMARY KEY,&#xA;        &#xA;[geolocation_lat] DECIMAL(10,6),&#xA;        &#xA;[geolocation_lng] DECIMAL(10,6),&#xA;        &#xA;[geolocation_city] VARCHAR(100),&#xA;       &#xA;[geolocation_state] VARCHAR(2),&#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME()&#xA; );&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Silver_Orders_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{AFAC2CFC-6BA5-456E-A601-F30A5BADBBB1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Silver_Orders_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Orders'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Orders] (&#xA;       &#xA;[geolocation_zip_code_prefix] NVARCHAR(4000),&#xA;        &#xA;[geolocation_lat] NVARCHAR(4000),&#xA;        &#xA;[geolocation_lng] NVARCHAR(4000),&#xA;        &#xA;[geolocation_city] NVARCHAR(4000),&#xA;       &#xA;[geolocation_state] NVARCHAR(4000),&#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME()&#xA;);&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Silver_Order_Payments_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2AF1081F-445C-43E8-8150-DBE34A5310DE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Silver_Order_Payments_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Order_Payments'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Order_Payments] (&#xA;       &#xA;[order_id] VARCHAR(50),&#xA;&#xA;[payment_sequential] INT,&#xA;&#xA;[payment_type] VARCHAR(30),&#xA;&#xA;[payment_installments] INT,&#xA;&#xA;[payment_value] DECIMAL(10,2),&#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME(),&#xA;&#xA;[dwh_source_file] NVARCHAR(260),&#xA;&#xA;[dwh_batch_id] INT&#xA; );&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Silver_Order_Reviews_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A19C1E98-B15C-4A29-B25F-A35747863909}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Silver_Order_Reviews_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Order_Reviews'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Order_Reviews] (&#xA;[review_id] VARCHAR(50) PRIMARY KEY,&#xA;&#xA;[order_id] VARCHAR(50),&#xA;&#xA;[review_score] TINYINT,&#xA;&#xA;[review_comment_title] NVARCHAR(MAX),&#xA;&#xA;[review_comment_message] NVARCHAR(MAX),&#xA;&#xA;[review_creation_date] DATETIME2,&#xA;&#xA;[review_answer_timestamp] DATETIME2,&#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME()&#xA; );&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Silver_Products_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DFF37A0A-B5B2-4669-88CE-0E88E59F9822}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Silver_Products_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Products'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Products] (&#xA;[product_id] VARCHAR(50) PRIMARY KEY,&#xA;&#xA;[product_category_name_english] VARCHAR(100),&#xA;&#xA;[product_name_length] INT,&#xA;&#xA;[product_description_length] INT,&#xA;&#xA;[product_photos_qty] INT,&#xA;&#xA;[product_weight_g] DECIMAL(10,2),&#xA;&#xA;[product_length_cm] DECIMAL(10,2),&#xA;&#xA;[product_height_cm] DECIMAL(10,2),&#xA;&#xA;[product_width_cm] DECIMAL(10,2),&#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME()&#xA; );&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Silver_Product_Category_Name_Translations_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{72CF2E9C-6E38-4DAF-ABE8-CDAD85C5CB63}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Silver_Product_Category_Name_Translations_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Product_Category_Name_Translation'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Product_Category_Name_Translation] (&#xA;[product_category_name] VARCHAR(100),&#xA;&#xA;[product_category_name_english] VARCHAR(100),       &#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME()&#xA; );&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create_Silver_Sellers_Tb"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{97ACF5D0-3B10-4922-945D-957E8320E5B0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create_Silver_Sellers_Tb"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{392DA717-F7E1-43EF-B087-5C2DD5054C5D}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM [Olist_DWH].sys.tables&#xA;    WHERE name = 'Sellerst'&#xA;)&#xA;BEGIN&#xA;    &#xA;CREATE TABLE [Olist_DWH].[silver].[Sellers] (&#xA;[seller_id] VARCHAR(50) PRIMARY KEY,&#xA;&#xA;[seller_zip_code_prefix] VARCHAR(5),&#xA;&#xA;[seller_city] VARCHAR(100),&#xA;&#xA;[seller_state] VARCHAR(2),&#xA;&#xA;[dwh_load_ts] DATETIME2 DEFAULT SYSDATETIME()&#xA; );&#xA;&#xA;END;&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EED44756-2DF7-4E96-9401-55FB0ACF04C0}"
+      DTS:From="Package\Create_Silver_Customers_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create_Silver_Geolocation_Tb" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3B4FE240-0794-4404-9EDB-4080488E2CF8}"
+      DTS:From="Package\Create_Silver_Geolocation_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Create_Order_Items_Tb" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{6A494105-937B-4DB2-8190-B75EE47A209A}"
+      DTS:From="Package\Create_Order_Items_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Create_Silver_Order_Payments_Tb" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{6C052B69-00BB-494D-85D3-18BB5A466EF9}"
+      DTS:From="Package\Create_Silver_Order_Payments_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Create_Silver_Order_Reviews_Tb" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{C8C39DD0-FEC7-473B-BE0F-05CF72ACB73B}"
+      DTS:From="Package\Create_Silver_Order_Reviews_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Create_Silver_Orders_Tb" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{410960DC-614E-4211-8062-5E8876117586}"
+      DTS:From="Package\Create_Silver_Orders_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Create_Silver_Products_Tb" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{3101A71F-B0A8-4C13-9111-6440E8EB3CAA}"
+      DTS:From="Package\Create_Silver_Products_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Create_Silver_Sellers_Tb" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{1078D299-71F0-470F-803D-82D09EEE6AA8}"
+      DTS:From="Package\Create_Silver_Sellers_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Create_Silver_Product_Category_Name_Translations_Tb" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{FBC0A911-F2A8-4A4F-8278-DDA1EF7F53AC}"
+      DTS:From="Package\Create_Silver_Product_Category_Name_Translations_Tb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Create_Error_Rows_Tb" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Create_Error_Rows_Tb"
+          TopLeft="739,394" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Create_Order_Items_Tb"
+          TopLeft="679,65" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Create_Silver_Customers_Tb"
+          TopLeft="79,69" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Create_Silver_Geolocation_Tb"
+          TopLeft="345,68" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Create_Silver_Order_Payments_Tb"
+          TopLeft="653,171" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Create_Silver_Order_Reviews_Tb"
+          TopLeft="352,171" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Create_Silver_Orders_Tb"
+          TopLeft="61,177" />
+        <NodeLayout
+          Size="361,42"
+          Id="Package\Create_Silver_Product_Category_Name_Translations_Tb"
+          TopLeft="650,284" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Create_Silver_Products_Tb"
+          TopLeft="52,281" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Create_Silver_Sellers_Tb"
+          TopLeft="369,280" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="305,89.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="40,0"
+              Start="0,0"
+              End="32.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="32.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="575,87.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104,0"
+              Start="0,0"
+              End="96.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="96.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="781.5,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="653,192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-54,0"
+              Start="0,0"
+              End="-46.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-46.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="352,195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-87,0"
+              Start="0,0"
+              End="-79.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-79.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="163.5,219">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="276,301.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93,0"
+              Start="0,0"
+              End="85.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="85.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="573,303">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77,0"
+              Start="0,0"
+              End="69.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="69.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="828.75,326">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
