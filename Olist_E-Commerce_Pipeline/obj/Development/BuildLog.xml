@@ -2,23 +2,33 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>Olist_E-Commerce_Pipeline</Name>
-    <LastWriteTime>2026-10-30T17:42:18.6702057Z</LastWriteTime>
+    <LastWriteTime>2026-11-06T15:07:48.5031359Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>00_Master.dtsx</Name>
-      <LastWriteTime>2026-10-30T17:51:52.2024777Z</LastWriteTime>
+      <LastWriteTime>2026-11-07T12:54:11.1388679Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>01_Bronze_Load.dtsx</Name>
-      <LastWriteTime>2026-10-30T17:42:18.5964025Z</LastWriteTime>
+      <LastWriteTime>2026-11-07T11:36:02.4829173Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>02_Silver_Transformation.dtsx</Name>
-      <LastWriteTime>2026-10-31T09:35:20.5344867Z</LastWriteTime>
+      <LastWriteTime>2026-11-07T11:31:04.7499287Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>04_Gold_Facts.dtsx</Name>
+      <LastWriteTime>2026-11-06T12:53:50.5567114Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>03_Gold_Dimensions.dtsx</Name>
+      <LastWriteTime>2026-11-07T12:54:11.0496773Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
